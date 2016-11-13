@@ -1,6 +1,6 @@
-# Management Without Borders
+# Black Jack game (Mobile)
 
-Hello, World :tada:
+This is an idea I've had of a simple Black Jack game that allows you to earn lots of money and buy amazing things such as a house, a car, or a boat. Anything that would make you feel satisfied.
 
 # Development
 
@@ -9,7 +9,5 @@ Hello, World :tada:
 3. `vagrant ssh`
 4. `cd /vagrant`
 5. `bin/rails s -b 0.0.0.0`
-6. ???
-7. Profit!
 
 Visit `localhost:3000` in your browser. 
