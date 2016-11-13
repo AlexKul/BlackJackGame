@@ -1,0 +1,26 @@
+// Place all the styles related to the blackJackSessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.hand{
+	width: 100%;
+	display: inline-table;
+	
+	img.card{
+		position: relative;
+		padding: 2px;
+		top: 0;
+		width: 30%;
+	}
+}
+
+.actions{
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+	a{
+		font-size: 37pt;
+    	padding: 15px;
+
+	}
+}

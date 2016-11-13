@@ -1,0 +1,15 @@
+<h2>Black Jack Game here!!!</h2>
+
+
+<div>
+	<h4>Dealer's Hand</h4>
+	<p><%= @dealer_hand %></p>
+</div>
+
+<div class="player-hand">
+	<h4>Player's Hand</h4>
+	<%= image_tag("cards/clubs/"+@player_hand[0]) %>
+
+
+	<%= link_to "Hit me bitch", black_jack_session_hit_path(@black_jack_session), remote: true %>
+</div>

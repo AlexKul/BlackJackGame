@@ -1,0 +1,12 @@
+<div class="table">
+	
+</div>
+<div class="game-status">
+	
+</div>
+<div class="actions">
+	<%= link_to "Deal Cards", black_jack_session_deal_path(@black_jack_session), remote:true, class: 'btn btn-default' %>
+
+	<%= link_to "Hit me bitch", black_jack_session_hit_path(@black_jack_session), remote:true, class: 'btn btn-default' %>
+	<%= link_to "Stand", black_jack_session_stand_path(@black_jack_session), remote: true, class: 'btn btn-default' %>
+</div>
