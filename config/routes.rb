@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'black_jack_sessions#index'
-  post '/' => 'user#submit'
+  root 'advisor#index'
 
-  resources :black_jack_sessions do
-    get 'deal' => 'black_jack_sessions#deal'
-    get 'hit' => 'black_jack_sessions#hit'
-    get 'stand' => 'black_jack_sessions#stand'
+  resources :movies do
+    get 'like' => 'movie#like'
+    get 'nope' => 'movie#nope'
+    get 'seen' => 'movie#seen'
   end 
   
   #root to:
