@@ -10,7 +10,7 @@
 		position: relative;
 		padding: 2px;
 		top: 0;
-		width: 30%;
+		width: 100px;
 	}
 }
 
@@ -18,9 +18,10 @@
 	position: fixed;
 	width: 100%;
 	bottom: 0;
+	background: black;
 	a{
-		font-size: 37pt;
-    	padding: 15px;
+		font-size: 27pt;
+    	margin: 15px;
 
 	}
 }

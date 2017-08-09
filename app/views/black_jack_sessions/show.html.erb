@@ -5,8 +5,11 @@
 	
 </div>
 <div class="actions">
-	<%= link_to "Deal Cards", black_jack_session_deal_path(@black_jack_session), remote:true, class: 'btn btn-default' %>
+	<label id="totalCash">Total Cash: $<%= current_user.money %></label>
+	<label>Bet Amount</label>
+	<%= number_field_tag 'bet' %>
+	<%= link_to "Deal Cards", black_jack_session_deal_path(@black_jack_session), remote:true, class: 'btn btn-default', id: 'dealBtn' %>
 
-	<%= link_to "Hit me bitch", black_jack_session_hit_path(@black_jack_session), remote:true, class: 'btn btn-default' %>
-	<%= link_to "Stand", black_jack_session_stand_path(@black_jack_session), remote: true, class: 'btn btn-default' %>
+	<%= link_to "Hit +", black_jack_session_hit_path(@black_jack_session), remote:true, class: 'btn btn-default disabled', id:'hitBtn' %>
+	<%= link_to "Stand ", black_jack_session_stand_path(@black_jack_session), remote: true, method: 'post', class: 'btn btn-default disabled', id:'standBtn' %>
 </div>

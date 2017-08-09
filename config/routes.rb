@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :black_jack_sessions do
     get 'deal' => 'black_jack_sessions#deal'
     get 'hit' => 'black_jack_sessions#hit'
-    get 'stand' => 'black_jack_sessions#stand'
+    post 'stand' => 'black_jack_sessions#stand'
   end 
   
   #root to:

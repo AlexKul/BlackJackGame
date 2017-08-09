@@ -1,9 +1,15 @@
 
 <div class="dealer-cards hand">
 	<p>Dealer's Hand</p>
-	<p class="d_total">Total: <%= @dealer_total %></p>
-	<%= image_tag("cards/clubs/"+"#{@dealer_hand[0]}", class: 'card') %>
-	<%= image_tag("cards/clubs/"+"#{@dealer_hand[1]}", class: 'card') %>
+	<% if @player_done %>
+		<p class="d_total">Total: <%= @dealer_total %></p>
+		<%= image_tag("cards/clubs/"+"#{@dealer_hand[0]}", class: 'card') %>
+		<%= image_tag("cards/clubs/"+"#{@dealer_hand[1]}", class: 'card') %>
+	<% else %>
+		<p class="d_total">Total: <%= @dealer_total - @dealer_hand[0] %></p>
+		<%= image_tag("cards/back.png", class: 'card') %>
+		<%= image_tag("cards/clubs/"+"#{@dealer_hand[1]}", class: 'card') %>
+	<%end%>
 </div>
 
 <div class="player-cards hand">

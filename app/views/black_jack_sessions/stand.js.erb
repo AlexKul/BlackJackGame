@@ -1,0 +1,10 @@
+$(".table").html('<%= j render partial: "deal" %>')
+$("#dealBtn").removeClass('disabled')
+
+
+$("#dealBtn").removeClass('disabled')
+
+$("#hitBtn").addClass('disabled')
+$("#standBtn").addClass('disabled')
+$("#totalCash").html('Total Cash: $<%= current_user.money %>')
+
