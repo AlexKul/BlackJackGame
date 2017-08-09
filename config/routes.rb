@@ -1,8 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'black_jack_sessions#index'
-  post '/' => 'user#submit'
+  root 'advisor#index'
 
   resources :black_jack_sessions do
     get 'deal' => 'black_jack_sessions#deal'
