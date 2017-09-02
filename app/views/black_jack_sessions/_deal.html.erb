@@ -3,18 +3,20 @@
 	<p>Dealer's Hand</p>
 	<% if @player_done %>
 		<p class="d_total">Total: <%= @dealer_total %></p>
-		<%= image_tag("cards/clubs/"+"#{@dealer_hand[0]}", class: 'card') %>
-		<%= image_tag("cards/clubs/"+"#{@dealer_hand[1]}", class: 'card') %>
+		<% @dealer_hand.each do |card|  %>
+			<%= image_tag("cards/#{card['suit']}/#{card['value']}", class: 'card') %>
+		<% end %>
 	<% else %>
-		<p class="d_total">Total: <%= @dealer_total - @dealer_hand[0] %></p>
+		<p class="d_total">Total: ? </p>
 		<%= image_tag("cards/back.png", class: 'card') %>
-		<%= image_tag("cards/clubs/"+"#{@dealer_hand[1]}", class: 'card') %>
+		<%= image_tag("cards/#{@dealer_hand[1]['suit']}/#{@dealer_hand[1]['value']}", class: 'card') %>
 	<%end%>
 </div>
 
 <div class="player-cards hand">
 	<p>Player's Hand</p>
 	<p class="p_total">Total: <%= @player_total %></p>
-	<%= image_tag("cards/clubs/"+"#{@player_hand[0]}", class: 'card') %>
-	<%= image_tag("cards/clubs/"+"#{@player_hand[1]}", class: 'card') %>
+	<% @player_hand.each do |card|  %>
+		<%= image_tag("cards/#{card['suit']}/#{card['value']}", class: 'card p_card') %>
+	<% end %>
 </div>

@@ -1,7 +1,7 @@
-$(".table").slideUp( 100 ).fadeIn(400);
 $(".table").html('<%= j render partial: "deal" %>')
-$("#dealBtn").removeClass('disabled')
+$(".game-status").html('<p><%= @game_result %></p>')
 
 resetTable()
 
 $("#totalCash").html('Total Cash: $<%= current_user.money %>')
+

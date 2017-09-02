@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root 'advisor#index'
+  root 'black_jack_sessions#index'
 
   resources :black_jack_sessions do
     get 'deal' => 'black_jack_sessions#deal'
     get 'hit' => 'black_jack_sessions#hit'
+    get 'double' => 'black_jack_sessions#double'
     post 'stand' => 'black_jack_sessions#stand'
   end 
   

@@ -1,7 +1,16 @@
+$(".table").slideUp( 0 ).fadeIn( 800 );
 $(".table").html('<%= j render partial: "deal" %>')
+
 $(".game-status").html('')
 $("#dealBtn").addClass('disabled')
 $("#bet").addClass('disabled')
+$("#totalCash").html('Total Cash: $<%= current_user.money %>')
+
+$("#cashStatus").slideUp( 300 ).fadeIn( 400 );
+$("#cashStatus").html('-$100');
+$("#cashStatus").delay( 3000 ).slideUp( 300 ).fadeOut( 400 );
 
 $("#hitBtn").removeClass('disabled')
 $("#standBtn").removeClass('disabled')
+$("#doubleBtn").removeClass('disabled')
+

@@ -1,12 +1,11 @@
-$(".player-cards").append('<%= j image_tag("cards/clubs/#{@next_card}", class: "card") %>')
+$(".player-cards").append('<%= j image_tag("cards/#{@next_card['suit']}/#{@next_card['value']}", class: "card n_card") %>')
+$(".n_card").toggle( 500 );
+$(".n_card").toggle( 500 ).delay(500);
+
 $(".p_total").html('<%= "Total: #{@player_total}" %>')
 $(".game-status").html('<p><%= @game_result %></p>')
 
 
 <% if @game_result=== 'lose'%>
-	$("#dealBtn").removeClass('disabled')
-	
-	$("#hitBtn").addClass('disabled')
-	$("#standBtn").addClass('disabled')
-	$("#totalCash").html('Total Cash: $<%= current_user.money %>')
+	resetTable()
 <% end %>

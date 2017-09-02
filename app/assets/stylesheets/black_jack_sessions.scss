@@ -1,27 +1,65 @@
 // Place all the styles related to the blackJackSessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.homeMenu{
 
-.hand{
+		border-radius: 20px;
+		border: black solid 2px;
+		margin: 20px;
+		padding: 10px;
+		font-size: 14pt;
+		text-align: center;
+
+		div.game{
+			border: black solid 2px;
+			margin: 20px;
+			padding: 10px;
+		}
+}
+
+.table{
+	
+	background-image: 'images/table.png';
+
+	text-align: center;
+
+	.hand{
 	width: 100%;
 	display: inline-table;
-	
-	img.card{
-		position: relative;
-		padding: 2px;
-		top: 0;
-		width: 100px;
+
+		p{
+			font-size: 20pt;
+		}
+		img.card{
+			position: relative;
+			padding: 2px;
+			top: 0;
+			width: 100px;
+		}
 	}
 }
+
 
 .actions{
 	position: fixed;
 	width: 100%;
 	bottom: 0;
 	background: black;
+	color: white;
+	
 	a{
-		font-size: 27pt;
+		font-size: 16pt;
     	margin: 15px;
 
+	}
+
+	label.cashStatus{
+		color: red;
+		width: 50px;
+	}
+
+	label.totalCash{
+		margin-left: 10px;
+		margin-right: 10px;
 	}
 }

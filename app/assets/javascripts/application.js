@@ -15,3 +15,11 @@
 //= require turbolinks
 //= require_tree .
 //= require bootstrap.min
+function resetTable(){
+	$("#dealBtn").removeClass('disabled')
+
+	$("#hitBtn").addClass('disabled')
+	$("#standBtn").addClass('disabled')
+	$("#doubleBtn").addClass('disabled')
+
+}
