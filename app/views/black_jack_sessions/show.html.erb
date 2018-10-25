@@ -1,16 +1,26 @@
 <div class="table">
 	<h2>PLACE YOUR BET</h2>
+
+
 </div>
-<div class="game-status">
-	
-</div>
+
 <div class="actions">
-	<label id="totalCash">Total Cash: $<%= current_user.money %></label>
-	<label id="cashStatus" class="cashStatus"> </label>
+	<label id="totalCash">Total Cash: $<%= number_with_precision(current_user.money, :precision => 2, :delimiter => ',') %></label>
+	<label id="cashStatus" class="cashStatus"></label>
 
-	<%= link_to "Deal Cards", black_jack_session_deal_path(@black_jack_session), remote:true, class: 'btn btn-default', id: 'dealBtn' %>
+	<%= form_tag(black_jack_session_deal_path(@black_jack_session), method: "get", remote: true,) do %>
+		<%= number_field_tag :bet, class: 'btn btn-default bet', id: 'bet', placeholder: 'bet amount' %>
+		<%= submit_tag "Deal Cards", class: 'btn btn-default', id: 'dealBtn' %>
+	<% end%>
 
-	<%= link_to "HIT +", black_jack_session_hit_path(@black_jack_session), remote:true, class: 'btn btn-default disabled', id:'hitBtn' %>
+	
+
+	<%= link_to "HIT", black_jack_session_hit_path(@black_jack_session), remote:true, class: 'btn btn-default disabled', id:'hitBtn' %>
 	<%= link_to "STAND ", black_jack_session_stand_path(@black_jack_session), remote: true, method: 'post', class: 'btn btn-default disabled', id:'standBtn' %>
 	<%= link_to "DOUBLE", black_jack_session_double_path(@black_jack_session), remote:true, class: 'btn btn-default disabled', id:'doubleBtn' %>
+
+	<label class="game-status"></label>
+
+
+	<label class="userInfo"> Level: <%= @userLevel %> EXP: <%= current_user.experience %></label>
 </div>

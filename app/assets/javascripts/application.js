@@ -23,3 +23,4 @@ function resetTable(){
 	$("#doubleBtn").addClass('disabled')
 
 }
+

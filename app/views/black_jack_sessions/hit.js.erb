@@ -3,9 +3,12 @@ $(".n_card").toggle( 500 );
 $(".n_card").toggle( 500 ).delay(500);
 
 $(".p_total").html('<%= "Total: #{@player_total}" %>')
-$(".game-status").html('<p><%= @game_result %></p>')
+$(".game-status").html('<%= @game_result %>')
 
 
-<% if @game_result=== 'lose'%>
+//disable double once youve hit	
+$("#doubleBtn").addClass('disabled')
+
+<% if @game_result=== 'Bust'%>
 	resetTable()
 <% end %>

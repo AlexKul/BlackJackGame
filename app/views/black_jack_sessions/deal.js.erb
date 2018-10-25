@@ -4,11 +4,18 @@ $(".table").html('<%= j render partial: "deal" %>')
 $(".game-status").html('')
 $("#dealBtn").addClass('disabled')
 $("#bet").addClass('disabled')
-$("#totalCash").html('Total Cash: $<%= current_user.money %>')
 
+//show the amount of the bet coming out 
+$("#cashStatus").css("color", "red");
 $("#cashStatus").slideUp( 300 ).fadeIn( 400 );
-$("#cashStatus").html('-$100');
+$("#cashStatus").html('<%= @amount %>');
 $("#cashStatus").delay( 3000 ).slideUp( 300 ).fadeOut( 400 );
+$("#cashStatus").fadeOut(500, function() {
+    $(this).html('');
+    $(this).fadeIn(500);
+});
+$("#totalCash").html('Total Cash: $<%= number_with_precision(current_user.money, :precision => 2, :delimiter => ',') %>')
+$(".userInfo").html('Level: <%= @userLevel %>  EXP: <%= current_user.experience %>')
 
 $("#hitBtn").removeClass('disabled')
 $("#standBtn").removeClass('disabled')

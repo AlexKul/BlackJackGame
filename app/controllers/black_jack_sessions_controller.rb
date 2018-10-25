@@ -5,14 +5,17 @@ class BlackJackSessionsController < ApplicationController
 	
 	def index
 		@black_jack_sessions = BlackJackSession.all
+
+		@day_passed = (DateTime.now.to_time.to_i - current_user.current_sign_in_at.to_i).abs/86400 > 1
 	end
 
 	def show
-
+		@userLevel = UserController.getLevel(current_user)
 	end
 
 	def deal
-		PlayBet(100)
+		session[:bet] = params['bet']
+		PlayBet(session[:bet].to_i)
 
 		@player_hand = []
 		@dealer_hand = []
@@ -41,6 +44,8 @@ class BlackJackSessionsController < ApplicationController
 
 		session[:player_hand] = @player_hand
 		session[:dealer_hand] = @dealer_hand
+
+		@userLevel = UserController.getLevel(current_user)
 	end
 
 
@@ -62,7 +67,7 @@ class BlackJackSessionsController < ApplicationController
 		elsif @player_total >= 18 && @player_total < 21
 			@game_result = "good"
 		else
-			@game_result = "lose"
+			@game_result = "Bust"
 			@player_done = true;		
 		end	
 	end
@@ -87,13 +92,15 @@ class BlackJackSessionsController < ApplicationController
 		elsif @player_total > 17 && @player_total < 21
 			@game_result = "good"
 		else
-			@game_result = "lose"
+			@game_result = "Bust"
 			@player_done = true;		
 		end	
 
-		PlayBet(100)
+		PlayBet(session[:bet].to_i)
 
-		find_winner('double', 100)
+		find_winner('double', session[:bet].to_i)
+
+		@userLevel = UserController.getLevel(current_user)
 	end
 
 	def stand
@@ -105,9 +112,9 @@ class BlackJackSessionsController < ApplicationController
 		@dealer_total = get_total(@dealer_hand)
 		@player_total = get_total(@player_hand)
 
-		find_winner('normal', 100)
+		find_winner('normal', session[:bet].to_i)
 
-
+		@userLevel = UserController.getLevel(current_user)
 	end
 
 	def get_total(hand)
@@ -148,42 +155,53 @@ class BlackJackSessionsController < ApplicationController
 
 		if @player_total > @dealer_total && @player_hand.count < 3 && @player_total == 21
 			BJwin(bet)
+			UserController.addExperience(bet, current_user)
+			@game_result = "BlackJack!"
 		elsif @player_total > @dealer_total && action == 'double' 
-			DoubleWin(bet)
+			doubleWin(bet)
+			UserController.addExperience(bet, current_user)
+			@game_result = "Double Win!"
 		elsif @player_total > @dealer_total || @dealer_total > 21
 			win(bet)
+			UserController.addExperience(bet, current_user)
+			@game_result = "Win"
 		elsif @player_total == @dealer_total
 			tie(bet)
-		end
-		
+			@game_result = "Tied"
+		else 
+			@game_result = "Dealer Wins"
+		end	
 	end
+
 
 	def BJwin(bet)
 		current_user.money += bet*3/2
 		current_user.save
-
+		@amount = "+$" + (bet*3/2).to_s
 	end
 	
-	def Doublewin(bet)
+	def doubleWin(bet)
 		current_user.money += bet*4
 		current_user.save
-
+		@amount = "+$" + (bet*4).to_s
 	end
 
 	def win(bet)
 		current_user.money += bet*2
 		current_user.save
-
+		@amount = "+$" + (bet*2).to_s
 	end
 	
 	def tie(bet)
 		current_user.money += bet
 		current_user.save
+		@amount = "+$" + bet.to_s
 	end
 
 	def PlayBet(bet)
 		current_user.money -= bet
 		current_user.save
+		@amount = "-$" + bet.to_s
 	end
 
 	def set_black_jack_session

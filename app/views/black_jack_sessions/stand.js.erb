@@ -1,7 +1,22 @@
-$(".table").slideUp( 100 ).fadeIn(400);
-$(".table").html('<%= j render partial: "deal" %>')
-$("#dealBtn").removeClass('disabled')
-
 resetTable()
 
-$("#totalCash").html('Total Cash: $<%= current_user.money %>')
+$(".table").slideUp( 0 ).fadeIn(400);
+$(".table").html('<%= j render partial: "deal" %>')
+$("#dealBtn").removeClass('disabled')
+$(".game-status").html('<%= @game_result %>')
+
+//show the amount of the win
+$("#cashStatus").css("color", "green"); 
+$("#cashStatus").slideUp( 300 ).fadeIn( 400 );
+$("#cashStatus").html('<%= @amount %>');
+$("#cashStatus").delay( 3000 ).slideUp( 300 ).fadeOut( 400 );
+$("#cashStatus").fadeOut(500, function() {
+    $(this).html('');
+    $(this).fadeIn(500);
+});
+$("#totalCash").html('Total Cash: $<%= number_with_precision(current_user.money, :precision => 2, :delimiter => ',') %>')
+$(".userInfo").html('Level: <%= @userLevel %> EXP: <%= current_user.experience %>')
+
+
+
+

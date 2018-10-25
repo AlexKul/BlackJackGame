@@ -1,7 +1,24 @@
 $(".table").html('<%= j render partial: "deal" %>')
-$(".game-status").html('<p><%= @game_result %></p>')
+$(".game-status").html('<%= @game_result %>')
+
+//show the amount of the win
+<% if @game_result =='Double Win!' || @game_result =='Tied' %>
+	$("#cashStatus").css("color", "green");
+	$(".userInfo").html('Level: <%= @userLevel %>  EXP: <%= current_user.experience %>')
+<% else %>
+	$("#cashStatus").css("color", "red");
+<% end %>
+ 
+$("#cashStatus").slideUp( 300 ).fadeIn( 400 );
+$("#cashStatus").html('<%= @amount %>');
+$("#cashStatus").delay( 3000 ).slideUp( 300 ).fadeOut( 400 );
+$("#cashStatus").fadeOut(500, function() {
+    $(this).html('');
+    $(this).fadeIn(500);
+});
+$("#totalCash").html('Total Cash: $<%= number_with_precision(current_user.money, :precision => 2, :delimiter => ',') %>')
 
 resetTable()
 
-$("#totalCash").html('Total Cash: $<%= current_user.money %>')
+
 

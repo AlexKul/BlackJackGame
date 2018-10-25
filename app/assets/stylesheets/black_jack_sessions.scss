@@ -46,9 +46,18 @@
 	bottom: 0;
 	background: black;
 	color: white;
-	
+	form{
+		display: inline-block;
+	}
+
+	input#bet{
+		color: black;
+		font-weight: 300;
+
+	}
+
 	a{
-		font-size: 16pt;
+		font-size: 14pt;
     	margin: 15px;
 
 	}
@@ -61,5 +70,12 @@
 	label.totalCash{
 		margin-left: 10px;
 		margin-right: 10px;
+	}
+	label.gameStatus{
+		font-size: 20pt;
+	}
+
+	label.userInfo{
+		float: right;
 	}
 }

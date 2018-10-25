@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808223449) do
+ActiveRecord::Schema.define(version: 20170904172003) do
 
   create_table "black_jack_sessions", force: :cascade do |t|
     t.integer  "player_total", default: 0
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170808223449) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.decimal  "money"
+    t.integer  "experience"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
